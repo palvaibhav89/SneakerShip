@@ -1,8 +1,5 @@
 package com.example.sneakers
 
-import androidx.compose.ui.test.ExperimentalTestApi
-import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onFirst
@@ -22,7 +19,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runners.MethodSorters
 
-@OptIn(ExperimentalTestApi::class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class MainScreenTest {
 
@@ -45,6 +41,16 @@ class MainScreenTest {
         composeTestRule.waitForIdle()
 
         composeTestRule.onNodeWithContentDescription("Home").performClick()
+        composeTestRule.waitForIdle()
+
+        val collection = composeTestRule.onAllNodesWithText(text = "Nike Air", substring = true, ignoreCase = true)
+        collection.onFirst().performClick()
+        composeTestRule.waitForIdle()
+
+        composeTestRule.onNodeWithText(text = "add to cart", ignoreCase = true).performClick()
+        composeTestRule.waitForIdle()
+
+        composeTestRule.onNodeWithContentDescription("Cart").performClick()
         composeTestRule.waitForIdle()
     }
 

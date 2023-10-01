@@ -26,19 +26,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.sneakers.R
 import com.example.sneakers.ui.home.model.HomePageState
 import com.example.sneakers.ui.main.model.Product
 import com.example.sneakers.observers.GlobalObserver
+import com.example.sneakers.ui.main.NavigationScreens
 import com.example.sneakers.ui.theme.IconColor
 import com.example.sneakers.views.DrawableWrapper
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    state: HomePageState
+    state: HomePageState,
+    productClickListener: (Product) -> Unit,
 ) {
-
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
@@ -139,9 +142,7 @@ fun HomeScreen(
                         addToCartClick = {
                             GlobalObserver.mainObserver.addToCart(it)
                         },
-                        productClickListener = {
-                            GlobalObserver.mainObserver.openProductDetailFor(it)
-                        }
+                        productClickListener = productClickListener
                     )
                 }
             }
@@ -157,6 +158,8 @@ fun HomePreview() {
             Product.generateProduct(),
             Product.generateProduct()
         )
-    })
+    }) {
+
+    }
 }
 

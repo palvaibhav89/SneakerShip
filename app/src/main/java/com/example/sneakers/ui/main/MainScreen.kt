@@ -66,10 +66,6 @@ fun MainScreen(
                         coroutineScope = coroutineScope
                     )
                 }
-                is MainObserver.MainEvent.OpenProductDetail -> {
-                    viewModel.productDetailPageState.product.value = it.product
-                    navController.navigateTo(NavigationScreens.ProductDetail.route, coroutineScope)
-                }
                 MainObserver.MainEvent.NavUp -> {
                     navController.navigateUp()
                 }
@@ -105,7 +101,7 @@ fun MainScreen(
                             .size(55.dp),
                         selected = selected,
                         onClick = {
-                            navController.navigateTo(bottomItem.route, coroutineScope)
+                            navController.navigateTo(bottomItem.route)
                         },
                         icon = bottomItem.icon,
                         contentDescription = stringResource(id = bottomItem.resourceId)
@@ -129,7 +125,7 @@ fun MainScreen(
                     .size(65.dp),
                 selected = selected,
                 onClick = {
-                    navController.navigateTo(item.route, coroutineScope)
+                    navController.navigateTo(item.route)
                 },
                 icon = item.icon,
                 contentDescription = stringResource(id = item.resourceId)
@@ -160,7 +156,10 @@ private fun MainScreenNavigationConfigurations(
         startDestination = NavigationScreens.Home.route
     ) {
         composable(NavigationScreens.Home.route) {
-            HomeScreen(viewModel.homePageState)
+            HomeScreen(viewModel.homePageState) { product ->
+                viewModel.productDetailPageState.product.value = product
+                navController.navigateTo(NavigationScreens.ProductDetail.route)
+            }
         }
         composable(NavigationScreens.Cart.route) {
             CartScreen(viewModel.cartPageState)
@@ -177,11 +176,9 @@ private fun SnackbarHostState.showSnackBar(message: String, coroutineScope: Coro
     }
 }
 
-private fun NavHostController.navigateTo(route: String, coroutineScope: CoroutineScope) {
-    coroutineScope.launch {
-        navigate(route = route) {
-            popUpTo(NavigationScreens.Home.route)
-        }
+private fun NavHostController.navigateTo(route: String) {
+    navigate(route = route) {
+        popUpTo(NavigationScreens.Home.route)
     }
 }
 

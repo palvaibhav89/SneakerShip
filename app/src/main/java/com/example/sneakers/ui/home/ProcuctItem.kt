@@ -30,14 +30,16 @@ import com.example.sneakers.views.ProductImage
 @Composable
 fun SneakerItem(
     product: Product,
-    productClickListener: () -> Unit,
+    productClickListener: (Product) -> Unit,
     addToCartClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight(),
-        onClick = productClickListener,
+        onClick = {
+            productClickListener(product)
+        },
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
