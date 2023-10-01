@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Sneakers</string>
+    <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="sneaker_ship">SneakerShip</string>
+    <string name="popular">Popular</string>
+    <string name="sort_by">Sort by</string>
+    <string name="nike_air">Nike Air</string>
+    <string name="price">$%d</string>
+    <string name="back">Back</string>
+    <string name="right">Right</string>
+    <string name="left">Left</string>
+    <string name="size">Size (uk) :</string>
+    <string name="colour">Colour :</string>
+    <string name="price_colon">Price :</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="order_details">Order details</string>
+    <string name="subtotal_dollar">Subtotal : $%d</string>
+    <string name="taxes_charges">Taxes and Charges : $%d</string>
+    <string name="total">Total : </string>
+    <string name="dollar_checkout">$ Checkout</string>
+    <string name="product_added_to_cart">Product Added to Cart</string>
+    <string name="product_removed_from_cart">Product Removed from Cart</string>
+    <string name="cart_empty">Cart Empty</string>
+    <string name="proceed_to_checkout">Proceed to Checkout</string>
+    <string name="product_detail">Product Detail</string>
+</resources>
