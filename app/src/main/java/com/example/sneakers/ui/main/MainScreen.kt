@@ -36,6 +36,7 @@ import com.example.sneakers.ui.home.HomeScreen
 import com.example.sneakers.ui.productdetails.ProductDetailScreen
 import com.example.sneakers.views.NavigationItemCustom
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Composable
@@ -46,6 +47,7 @@ fun MainScreen(
 
     val backStackEntry = navController.currentBackStackEntryAsState()
     val ctx = LocalContext.current
+    val mainIOScope = CoroutineScope(Dispatchers.Main)
     val coroutineScope = rememberCoroutineScope()
     val snackBarHostState = remember { SnackbarHostState() }
 
@@ -66,8 +68,14 @@ fun MainScreen(
                         coroutineScope = coroutineScope
                     )
                 }
+                is MainObserver.MainEvent.OpenProductDetail -> {
+                    viewModel.productDetailPageState.product.value = it.product
+                    navController.navigateTo(NavigationScreens.ProductDetail.route, mainIOScope)
+                }
                 MainObserver.MainEvent.NavUp -> {
-                    navController.navigateUp()
+                    mainIOScope.launch {
+                        navController.navigateUp()
+                    }
                 }
                 MainObserver.MainEvent.ProceedToCheckout -> {
                     snackBarHostState.showSnackBar(
@@ -101,7 +109,7 @@ fun MainScreen(
                             .size(55.dp),
                         selected = selected,
                         onClick = {
-                            navController.navigateTo(bottomItem.route)
+                            navController.navigateTo(bottomItem.route, mainIOScope)
                         },
                         icon = bottomItem.icon,
                         contentDescription = stringResource(id = bottomItem.resourceId)
@@ -125,7 +133,7 @@ fun MainScreen(
                     .size(65.dp),
                 selected = selected,
                 onClick = {
-                    navController.navigateTo(item.route)
+                    navController.navigateTo(item.route, mainIOScope)
                 },
                 icon = item.icon,
                 contentDescription = stringResource(id = item.resourceId)
@@ -156,10 +164,7 @@ private fun MainScreenNavigationConfigurations(
         startDestination = NavigationScreens.Home.route
     ) {
         composable(NavigationScreens.Home.route) {
-            HomeScreen(viewModel.homePageState) { product ->
-                viewModel.productDetailPageState.product.value = product
-                navController.navigateTo(NavigationScreens.ProductDetail.route)
-            }
+            HomeScreen(viewModel.homePageState)
         }
         composable(NavigationScreens.Cart.route) {
             CartScreen(viewModel.cartPageState)
@@ -176,9 +181,11 @@ private fun SnackbarHostState.showSnackBar(message: String, coroutineScope: Coro
     }
 }
 
-private fun NavHostController.navigateTo(route: String) {
-    navigate(route = route) {
-        popUpTo(NavigationScreens.Home.route)
+private fun NavHostController.navigateTo(route: String, coroutineScope: CoroutineScope) {
+    coroutineScope.launch {
+        navigate(route = route) {
+            popUpTo(NavigationScreens.Home.route)
+        }
     }
 }
 

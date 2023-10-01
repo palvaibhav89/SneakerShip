@@ -22,6 +22,11 @@ class MainObserver {
         sendEvent(MainEvent.RemoveFromCart(product))
     }
 
+    fun openProductDetailFor(product: Product?) {
+        product ?: return
+        sendEvent(MainEvent.OpenProductDetail(product))
+    }
+
     fun navUp() {
         sendEvent(MainEvent.NavUp)
     }
@@ -52,5 +57,7 @@ class MainObserver {
         class AddToCart(val product: Product): MainEvent()
 
         class RemoveFromCart(val product: Product): MainEvent()
+
+        class OpenProductDetail(val product: Product): MainEvent()
     }
 }

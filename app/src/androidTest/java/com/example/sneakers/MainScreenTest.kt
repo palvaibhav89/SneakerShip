@@ -37,20 +37,30 @@ class MainScreenTest {
             MainScreen(MainViewModel(MainRepository(database)), navController)
         }
 
-        composeTestRule.onNodeWithContentDescription("Cart").performClick()
+        composeTestRule
+            .onNodeWithContentDescription("Cart")
+            .performClick()
         composeTestRule.waitForIdle()
 
-        composeTestRule.onNodeWithContentDescription("Home").performClick()
+        composeTestRule
+            .onNodeWithContentDescription("Home")
+            .performClick()
         composeTestRule.waitForIdle()
 
-        val collection = composeTestRule.onAllNodesWithText(text = "Nike Air", substring = true, ignoreCase = true)
-        collection.onFirst().performClick()
+        composeTestRule
+            .onAllNodesWithText(text = "Nike Air", substring = true, ignoreCase = true)
+            .onFirst()
+            .performClick()
         composeTestRule.waitForIdle()
 
-        composeTestRule.onNodeWithText(text = "add to cart", ignoreCase = true).performClick()
+        composeTestRule
+            .onNodeWithText(text = "add to cart", ignoreCase = true)
+            .performClick()
         composeTestRule.waitForIdle()
 
-        composeTestRule.onNodeWithContentDescription("Cart").performClick()
+        composeTestRule
+            .onNodeWithContentDescription("Cart")
+            .performClick()
         composeTestRule.waitForIdle()
     }
 
