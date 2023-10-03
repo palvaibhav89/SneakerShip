@@ -24,6 +24,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.sneakers.R
 import com.example.sneakers.ui.main.model.Product
 import com.example.sneakers.ui.theme.IconColor
+import com.example.sneakers.ui.theme.SneakerTypography
 import com.example.sneakers.views.ProductImage
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -80,9 +81,8 @@ fun SneakerItem(
                     },
                 text = product.name,
                 color = Color.Black,
-                fontSize = 18.sp,
+                style = SneakerTypography.labelMedium,
                 fontWeight = FontWeight.Bold,
-                letterSpacing = 0.4.sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -96,9 +96,7 @@ fun SneakerItem(
                     },
                 text = stringResource(id = R.string.price, product.retailPrice),
                 color = IconColor,
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold,
-                letterSpacing = 0.4.sp
+                style = SneakerTypography.titleMedium
             )
         }
     }

@@ -26,6 +26,7 @@ import androidx.constraintlayout.compose.Dimension
 import com.example.sneakers.R
 import com.example.sneakers.ui.main.model.Product
 import com.example.sneakers.ui.theme.IconColor
+import com.example.sneakers.ui.theme.SneakerTypography
 import com.example.sneakers.views.ProductImage
 
 @Composable
@@ -75,9 +76,7 @@ fun CartProductView(
                         },
                     text = cartProduct.name,
                     color = Color.Black,
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 0.4.sp
+                    style = SneakerTypography.titleMedium
                 )
 
                 Spacer(
@@ -100,9 +99,7 @@ fun CartProductView(
                         },
                     text = stringResource(id = R.string.price, cartProduct.retailPrice),
                     color = Color.Gray,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 0.4.sp
+                    style = SneakerTypography.titleSmall
                 )
             }
         }

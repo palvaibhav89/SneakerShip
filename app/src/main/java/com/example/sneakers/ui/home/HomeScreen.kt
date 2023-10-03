@@ -31,6 +31,7 @@ import com.example.sneakers.ui.home.model.HomePageState
 import com.example.sneakers.ui.main.model.Product
 import com.example.sneakers.observers.GlobalObserver
 import com.example.sneakers.ui.theme.IconColor
+import com.example.sneakers.ui.theme.SneakerTypography
 import com.example.sneakers.views.DrawableWrapper
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -61,9 +62,8 @@ fun HomeScreen(
                     },
                 text = stringResource(id = R.string.sneaker_ship).uppercase(),
                 color = IconColor,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
-                letterSpacing = 0.4.sp
+                style = SneakerTypography.labelMedium,
+                fontWeight = FontWeight.Bold
             )
 
             IconButton(
@@ -91,9 +91,7 @@ fun HomeScreen(
                     },
                 text = stringResource(id = R.string.popular),
                 color = Color.Black,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                letterSpacing = 0.4.sp
+                style = SneakerTypography.titleSmall
             )
 
             DrawableWrapper(
@@ -109,9 +107,7 @@ fun HomeScreen(
                 Text(
                     text = stringResource(id = R.string.sort_by),
                     color = Color.Gray,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Normal,
-                    letterSpacing = 0.4.sp
+                    style = SneakerTypography.labelSmall
                 )
             }
 

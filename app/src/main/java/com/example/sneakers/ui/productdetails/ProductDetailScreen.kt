@@ -39,6 +39,7 @@ import com.example.sneakers.observers.GlobalObserver
 import com.example.sneakers.ui.main.model.Product
 import com.example.sneakers.ui.productdetails.model.ProductDetailPageState
 import com.example.sneakers.ui.theme.IconColor
+import com.example.sneakers.ui.theme.SneakerTypography
 import com.example.sneakers.views.DrawableWrapper
 
 @Composable
@@ -138,9 +139,7 @@ fun ProductDetailScreen(
                         modifier = Modifier,
                         text = product.value?.name.toString(),
                         color = Color.Black,
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.Bold,
-                        letterSpacing = 0.4.sp
+                        style = SneakerTypography.titleMedium
                     )
                 }
 
@@ -149,9 +148,7 @@ fun ProductDetailScreen(
                         .padding(top = 6.dp),
                     text = product.value?.desc.toString(),
                     color = Color.Gray,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Normal,
-                    letterSpacing = 0.4.sp
+                    style = SneakerTypography.bodySmall
                 )
 
                 val sizeState = remember {
@@ -180,9 +177,7 @@ fun ProductDetailScreen(
                             .padding(end = 6.dp),
                         text = stringResource(id = R.string.size),
                         color = Color.Gray,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Normal,
-                        letterSpacing = 0.4.sp
+                        style = SneakerTypography.labelLarge
                     )
 
                     ClipGroup(
@@ -213,9 +208,7 @@ fun ProductDetailScreen(
                             .padding(end = 6.dp),
                         text = stringResource(id = R.string.colour),
                         color = Color.Gray,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Normal,
-                        letterSpacing = 0.4.sp
+                        style = SneakerTypography.labelLarge
                     )
 
                     ClipGroup(
@@ -242,9 +235,7 @@ fun ProductDetailScreen(
                             .padding(end = 6.dp),
                         text = stringResource(id = R.string.price_colon),
                         color = Color.Gray,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Normal,
-                        letterSpacing = 0.4.sp
+                        style = SneakerTypography.labelLarge
                     )
 
                     Text(
@@ -253,9 +244,7 @@ fun ProductDetailScreen(
                             .padding(end = 6.dp),
                         text = stringResource(id = R.string.price, product.value?.retailPrice ?: 0),
                         color = IconColor,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        letterSpacing = 0.4.sp
+                        style = SneakerTypography.titleSmall
                     )
 
                     Button(
@@ -274,9 +263,8 @@ fun ProductDetailScreen(
                                 .padding(end = 6.dp),
                             text = stringResource(id = R.string.add_to_cart),
                             color = Color.White,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
-                            letterSpacing = 0.4.sp
+                            style = SneakerTypography.labelSmall,
+                            fontWeight = FontWeight.Bold
                         )
                     }
                 }

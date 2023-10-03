@@ -39,6 +39,7 @@ import com.example.sneakers.ui.cart.model.CartPageState
 import com.example.sneakers.ui.main.model.Product
 import com.example.sneakers.observers.GlobalObserver
 import com.example.sneakers.ui.theme.IconColor
+import com.example.sneakers.ui.theme.SneakerTypography
 import com.example.sneakers.views.DrawableWrapper
 import kotlinx.coroutines.launch
 
@@ -89,9 +90,7 @@ fun CartScreen(
                        .align(Alignment.Center),
                     text = stringResource(id = R.string.cart),
                     color = IconColor,
-                    fontSize = 23.sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 0.4.sp
+                    style = SneakerTypography.titleLarge
                 )
             }
         },
@@ -154,9 +153,7 @@ fun CartScreen(
                             Text(
                                 text = stringResource(id = R.string.order_details),
                                 color = Color.Black,
-                                fontSize = 22.sp,
-                                fontWeight = FontWeight.Bold,
-                                letterSpacing = 0.4.sp
+                                style = SneakerTypography.titleMedium
                             )
                         }
 
@@ -168,9 +165,7 @@ fun CartScreen(
                                 },
                             text = stringResource(id = R.string.subtotal_dollar, subTotalValue),
                             color = Color.Gray,
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Normal,
-                            letterSpacing = 0.4.sp
+                            style = SneakerTypography.labelMedium
                         )
 
                         Text(
@@ -181,9 +176,7 @@ fun CartScreen(
                                 },
                             text = stringResource(id = R.string.taxes_charges, taxes),
                             color = Color.Gray,
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Normal,
-                            letterSpacing = 0.4.sp
+                            style = SneakerTypography.labelMedium
                         )
 
                         Text(
@@ -195,9 +188,7 @@ fun CartScreen(
                                 },
                             text = stringResource(id = R.string.total),
                             color = Color.Gray,
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Normal,
-                            letterSpacing = 0.4.sp
+                            style = SneakerTypography.labelLarge
                         )
 
                         Text(
@@ -209,9 +200,7 @@ fun CartScreen(
                             },
                             text = stringResource(id = R.string.price, (subTotalValue + taxes)),
                             color = IconColor,
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                            letterSpacing = 0.4.sp
+                            style = SneakerTypography.titleSmall
                         )
 
                         Button(
@@ -231,9 +220,8 @@ fun CartScreen(
                                     .padding(end = 6.dp),
                                 text = stringResource(id = R.string.dollar_checkout),
                                 color = Color.White,
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.Bold,
-                                letterSpacing = 0.4.sp
+                                style = SneakerTypography.labelSmall,
+                                fontWeight = FontWeight.Bold
                             )
                         }
                     }
